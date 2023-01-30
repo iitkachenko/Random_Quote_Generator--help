@@ -1,15 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState: any[] = [];
+import { quotesData } from "../components/Quotes";
+
+const initialState: quotesData[] = [];
 
 const bookmarksSlice = createSlice({
   name: "bookmarks",
   initialState,
   reducers: {
     add(state, action) {
-      state.push(action.payload);
+      const itemInBookmark = state.find(
+        (item) => item._id === action.payload._id
+      );
+      if (itemInBookmark === undefined) state.push(action.payload);
+      localStorage.setItem("bookmarks", JSON.stringify(state));
     },
     remove(state, action) {
-      return state.filter((item) => item.id !== action.payload);
+      const newState = [...state.filter((item: quotesData) => item._id !== action.payload)];
+      localStorage.setItem("bookmarks", JSON.stringify(newState));
+      return newState;
     },
   },
 });
