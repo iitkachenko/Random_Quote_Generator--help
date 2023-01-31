@@ -51,6 +51,7 @@ export const fetchTagsData = createAsyncThunk(
   async (name: string) => {
     const res = await fetch(`https://api.quotable.io/random?tags=${name}`);
     const data = await res.json();
+    console.log(data);
     return data;
   }
 );
