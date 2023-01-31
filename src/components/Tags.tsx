@@ -4,7 +4,7 @@ import { AppDispatch } from "../store/store";
 import React, { useEffect } from "react";
 import { fetchTagsData } from "../store/quotesSlice";
 
-interface TagData {
+export interface TagData {
   dateAdded: string;
   dateModified: string;
   name: string;

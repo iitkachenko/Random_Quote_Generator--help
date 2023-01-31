@@ -8,7 +8,7 @@ export enum Status {
 }
 
 const initialState: {
-  data: any[];
+  data: quotesData[];
   status: Status;
 } = {
   data: [],
@@ -31,13 +31,19 @@ const quotesSlice = createSlice({
       .addCase(fetchQuotes.rejected, (state, action) => {
         state.status = Status.ERROR;
       })
+      .addCase(fetchTagsData.pending, (state, action) => {
+        state.status = Status.LOADING;
+      })
       .addCase(fetchTagsData.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.status = Status.IDLE;
+      })
+      .addCase(fetchTagsData.rejected, (state, action) => {
+        state.status = Status.ERROR;
       })
   },
 });
 
-// export const { setQuotes, setStatus } = quotesSlice.actions;
 export default quotesSlice.reducer;
 
 export const fetchQuotes = createAsyncThunk("quotes/fetchQuotes", async ( ) => {

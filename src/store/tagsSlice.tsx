@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { quotesData } from "../components/Quotes";
+import { TagData } from "../components/Tags";
 
 const initialState: {
-  data: quotesData[];
+  data: TagData[];
 } = {
   data: [],
 };
@@ -12,14 +13,12 @@ const tagsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchTags.fulfilled, (state, action) => {
-        state.data = action.payload;
-      })
+    builder.addCase(fetchTags.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   },
 });
 
-// export const { setQuotes, setStatus } = quotesSlice.actions;
 export default tagsSlice.reducer;
 
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
@@ -27,5 +26,3 @@ export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   const data = await res.json();
   return data;
 });
-
-
