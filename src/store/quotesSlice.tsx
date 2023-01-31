@@ -8,7 +8,7 @@ export enum Status {
 }
 
 const initialState: {
-  data: quotesData[];
+  data: any[];
   status: Status;
 } = {
   data: [],
@@ -37,8 +37,17 @@ const quotesSlice = createSlice({
 // export const { setQuotes, setStatus } = quotesSlice.actions;
 export default quotesSlice.reducer;
 
-export const fetchQuotes = createAsyncThunk("quotes/fetchQuotes", async () => {
-  const res = await fetch("https://api.quotable.io/random");
+export const fetchQuotes = createAsyncThunk("quotes/fetchQuotes", async ( ) => {
+  const res = await fetch(`https://api.quotable.io/random`);
   const data = await res.json();
   return data;
 });
+
+export const fetchTagsData = createAsyncThunk(
+  "tags/fetchTagsData",
+  async (name: string) => {
+    const res = await fetch(`https://api.quotable.io/random?tags=${name}`);
+    const data = await res.json();
+    return data;
+  }
+);

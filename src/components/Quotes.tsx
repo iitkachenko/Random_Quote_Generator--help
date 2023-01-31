@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/bookmarksSlice";
-import { fetchQuotes } from "../store/quotesSlice";
+import { fetchQuotes, fetchTagsData } from "../store/quotesSlice";
 import { Status } from "../store/quotesSlice";
 import { AppDispatch } from "../store/store";
 
@@ -36,7 +36,7 @@ const Quotes = () => {
   }
 
   return (
-    <section className="bg-[#D05252] mt-10 pt-7 pb-7 mx-auto relative rounded-xl md:w-[750px] w-[350px] min-h-[300px] h-auto text-white">
+    <section className="bg-[#D05252] md:mt-10 mt-5 py-7 mx-auto relative rounded-xl md:w-[750px] w-[350px] min-h-[300px] h-auto text-white">
       <div className="flex items-center justify-center flex-col px-7">
         <h1 className="md:text-[1.9rem] text-[1.5rem] text-left min-h-[120px] h-auto">
           {quotes.content}

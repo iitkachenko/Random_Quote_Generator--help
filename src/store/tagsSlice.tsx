@@ -25,8 +25,6 @@ const tagsSlice = createSlice({
         state.status = Status.LOADING;
       })
       .addCase(fetchTags.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.data = action.payload;
         state.status = Status.IDLE;
       })
@@ -44,3 +42,5 @@ export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   const data = await res.json();
   return data;
 });
+
+
