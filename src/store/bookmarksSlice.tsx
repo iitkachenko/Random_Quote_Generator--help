@@ -14,8 +14,11 @@ const bookmarksSlice = createSlice({
       if (itemInBookmark === undefined) state.push(action.payload);
       localStorage.setItem("bookmarks", JSON.stringify(state));
     },
+
     remove(state, action) {
-      const newState = [...state.filter((item: quotesData) => item._id !== action.payload)];
+      const newState = [
+        ...state.filter((item: quotesData) => item._id !== action.payload),
+      ];
       localStorage.setItem("bookmarks", JSON.stringify(newState));
       return newState;
     },

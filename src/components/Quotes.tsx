@@ -12,6 +12,7 @@ export interface quotesData {
   author: string;
 }
 
+
 const Quotes = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { data: quotes, status } = useSelector((state: any) => state.quotes);
@@ -35,16 +36,17 @@ const Quotes = () => {
   }
 
   return (
-    <section className="bg-[#D05252] mt-10 pt-7 pb-7 mx-auto relative rounded-xl w-[750px] min-h-[300px] h-auto text-white">
-      <div className="flex mx-auto items-center justify-center flex-col w-[594px]">
-        <h1 className="text-3xl text-left leading-10 mx-auto min-h-[120px] h-auto">
+    <section className="bg-[#D05252] mt-10 pt-7 pb-7 mx-auto relative rounded-xl md:w-[750px] w-[350px] min-h-[300px] h-auto text-white">
+      <div className="flex items-center justify-center flex-col px-7">
+        <h1 className="md:text-[1.9rem] text-[1.5rem] text-left min-h-[120px] h-auto">
           {quotes.content}
         </h1>
-        <div className="flex mt-20">
-          <p className="text-lg font-[700] leading-[38px] tracking-[0.8px]">-{quotes.author}</p>
+        <div className="w-full flex mt-20 justify-around items-center">
+          <div></div>
+          <p className="text-[22px] font-[700] leading-[38px] tracking-[1px]">-{quotes.author}</p>
           <BsFillBookmarkPlusFill
             onClick={() => handleAdd(quotes)}
-            className="absolute right-10 mr-12 text-2xl cursor-pointer active:animate-ping"
+            className="text-2xl cursor-pointer active:animate-ping"
           />
         </div>
       </div>
