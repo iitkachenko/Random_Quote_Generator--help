@@ -22,9 +22,9 @@ const Tags = () => {
   }, []);
 
   const showTagQuote = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
     dispatch(fetchTagsData(e.target.value));
   };
-
   return (
     <div className="md:my-14 my-10 mx-auto relative h-1 flex items-center justify-center gap-[.5em] p-[.5em] rounded-3xl outline-none w-[20em]">
       <select
