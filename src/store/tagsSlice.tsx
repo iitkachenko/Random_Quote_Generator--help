@@ -1,18 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { quotesData } from "../components/Quotes";
 
-export enum Status {
-  LOADING = "loading",
-  IDLE = "idle",
-  ERROR = "error",
-}
-
 const initialState: {
-  data: object[];
-  status: Status;
+  data: quotesData[];
 } = {
   data: [],
-  status: Status.IDLE,
 };
 
 const tagsSlice = createSlice({
@@ -21,16 +13,9 @@ const tagsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTags.pending, (state, action) => {
-        state.status = Status.LOADING;
-      })
       .addCase(fetchTags.fulfilled, (state, action) => {
         state.data = action.payload;
-        state.status = Status.IDLE;
       })
-      .addCase(fetchTags.rejected, (state, action) => {
-        state.status = Status.ERROR;
-      });
   },
 });
 

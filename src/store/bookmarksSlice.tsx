@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { quotesData } from "../components/Quotes";
 
-const initialState: quotesData[] = [];
+const initialState: quotesData[] = JSON.parse(localStorage.getItem("bookmarks") || "[]")
 
 const bookmarksSlice = createSlice({
   name: "bookmarks",

@@ -30,7 +30,10 @@ const quotesSlice = createSlice({
       })
       .addCase(fetchQuotes.rejected, (state, action) => {
         state.status = Status.ERROR;
-      });
+      })
+      .addCase(fetchTagsData.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
   },
 });
 
