@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import bookmarksReducer from "./bookmarksSlice"
-import quotesSlice from "./quotesSlice";
+import quotesSlice from "./quotesSlice.jsx";
 import tagsSlice from "./tagsSlice";
 
 const store = configureStore({
@@ -13,3 +13,4 @@ const store = configureStore({
 
 export default store
 export type AppDispatch = typeof store.dispatch
+

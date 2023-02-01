@@ -9,10 +9,12 @@ export enum Status {
 
 const initialState: {
   data: quotesData[];
+  tag: string;
   status: Status;
 } = {
   data: [],
   status: Status.IDLE,
+  tag: "",
 };
 
 const quotesSlice = createSlice({
@@ -35,18 +37,19 @@ const quotesSlice = createSlice({
         state.status = Status.LOADING;
       })
       .addCase(fetchTagsData.fulfilled, (state, action) => {
-        state.data = action.payload;
+        state.tag = action.payload.name;
+        state.data = action.payload.data;
         state.status = Status.IDLE;
       })
       .addCase(fetchTagsData.rejected, (state, action) => {
         state.status = Status.ERROR;
-      })
+      });
   },
 });
 
 export default quotesSlice.reducer;
 
-export const fetchQuotes = createAsyncThunk("quotes/fetchQuotes", async ( ) => {
+export const fetchQuotes = createAsyncThunk("quotes/fetchQuotes", async () => {
   const res = await fetch(`https://api.quotable.io/random`);
   const data = await res.json();
   return data;
@@ -57,6 +60,6 @@ export const fetchTagsData = createAsyncThunk(
   async (name: string) => {
     const res = await fetch(`https://api.quotable.io/random?tags=${name}`);
     const data = await res.json();
-    return data;
+    return { data, name };
   }
 );

@@ -2,7 +2,7 @@ import { fetchTags } from "../store/tagsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../store/store";
 import React, { useEffect } from "react";
-import { fetchTagsData } from "../store/quotesSlice";
+import { fetchTagsData } from "../store/quotesSlice.jsx";
 
 export interface TagData {
   dateAdded: string;

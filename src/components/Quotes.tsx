@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/bookmarksSlice";
-import { fetchQuotes } from "../store/quotesSlice";
-import { Status } from "../store/quotesSlice";
+import { fetchQuotes } from "../store/quotesSlice.jsx";
+import { Status } from "../store/quotesSlice.jsx";
 import { AppDispatch } from "../store/store";
 
 export interface quotesData {
@@ -33,6 +33,9 @@ const Quotes = () => {
       <h2 className="text-3xl text-white">{quotes.statusMessage}</h2>
     );
   }
+
+  console.log(quotes);
+
 
   return (
     <section className="bg-[#D05252] md:mt-10 mt-5 py-7 mx-auto relative rounded-xl md:w-[750px] w-[350px] min-h-[300px] h-auto text-white">

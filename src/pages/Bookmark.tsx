@@ -10,7 +10,6 @@ interface RootState {
 const Bookmark = () => {
   const dispatch = useDispatch();
   const quotes = useSelector((state: RootState) => state.bookmarks)
-  // const quotes: quotesData[] = JSON.parse(localStorage.getItem("bookmarks") || "[]");
 
   const handleRemove = (id: any) => {
     dispatch(remove(id))
