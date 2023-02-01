@@ -9,12 +9,9 @@ const Home = () => {
   const {tag} = useSelector((state:any) => state.quotes)
 
   const getQuotes = () => {
-    // console.log(state);
-
-    if(tag){
+    if(tag && tag!== "Choose a Tag for quotes"){
       dispatch(fetchTagsData(tag))
     } else {
-
       dispatch(fetchQuotes());
     }
   };
